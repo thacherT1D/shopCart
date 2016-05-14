@@ -1,0 +1,47 @@
+<div ng-controller="MainCtrl">
+
+
+
+<nav class="navbar navbar-default">
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+      <!-- <li><a href="#">Link</a></li> -->
+      <li class="buttonResize">
+        <label>Search by Category:  </label>
+        <select type="button" class="btn btn-default" ng-init="order = '-category'" ng-model="order" class="form-group">
+        <option value="-category" selected>All</option>
+        <option value="cat1">Category 1</option>
+        <option value="cat2">Category 2</option>
+        <option value="cat3">Category 3</option>
+      </select></li>
+    </ul>
+    <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+        <label>Search by Name:  </label>
+        <input type="text" class="form-control" placeholder="Search">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <!-- <ul class="nav navbar-nav">
+      <li class="buttonResize">
+        <label>Sort By: </label>
+        <select type="button" class="btn btn-default" ng-init="order = '-rating'" ng-model="order" class="form-group">
+          <option value="-rating" selected>Rating</option>
+          <option value="title">Title</option>
+          <option value="date">Date</option>
+          <option value="author">Author</option>
+        </select>
+      </li>
+    </ul> -->
+    <ul class="nav navbar-nav navbar-right">
+      <li type="button" class="btn btn-info buttonResize" href="#">Checkout | Bag Empty!</li>
+    </ul>
+  </div>
+</nav>
+
+  <h1>Hello</h1>
+  <div class="" ng-repeat="item in inventory">
+    <h3>{{item.name}}</h3>
+    <p><strong>Price: </strong>{{item.price | currency}}</p>
+  </div>
+</div>
