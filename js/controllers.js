@@ -1,6 +1,6 @@
 angular
   .module('shopCart')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, $rootScope) {
     $scope.item = {};
     $scope.inventory = [
       {
