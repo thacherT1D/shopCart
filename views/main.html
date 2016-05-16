@@ -1,29 +1,41 @@
 <div ng-controller="MainCtrl">
 
-  <div>
-    <label>Search by Category:  </label>
-    <select type="button" class="btn btn-default">
-    <option value="-category" selected>All</option>
-    <option value="cat1">Category 1</option>
-    <option value="cat2">Category 2</option>
-    <option value="cat3">Category 3</option>
-    </select>
-
-
-    <form class="navbar-form navbar-left" role="search">
-      <div class="form-group">
-        <input ng-model="root.item" type="text" class="form-control" placeholder="Search">
-      </div>
-      <button type="submit" class="btn btn-default">Submit</button>
-    </form>
-{{root.item}}
-    <button class="btn btn-info">Checkout | Bag Empty!</button>
+  <div class="row">
+    <div class="col-md-4">
+      <label>Search by Category:  </label>
+      <select type="button" class="btn btn-default">
+      <option value="-category" selected>All</option>
+      <option value="cat1">Category 1</option>
+      <option value="cat2">Category 2</option>
+      <option value="cat3">Category 3</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <input ng-model="root.item" type="text" class="form-control" placeholder="Search By Name">
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-info">Checkout | Bag Empty!</button>
+    </div>
   </div>
+
+
+  <!-- <div ng-repeat="item in inventory">
+    <div ng-repeat="category in item.categories">
+      <option>{{category}}</option>
+    </div>
+  </div> -->
+
 
   <table>
     <th>Tea</th>
-    <th>Information</th>
-    <tr ng-repeat="item in inventory | filter:root.item">
+    <th>Information
+      <label>Sort by Price: </label>
+      <select type="button" class="btn btn-default" ng-init="order = 'name'" ng-model="order">
+      <option value="-price">Highest to Lowest</option>
+      <option value="price">Lowest to Highest</option>
+      </select>
+    </th>
+    <tr ng-repeat="item in inventory | filter:root.item | orderBy: order">
       <td>
         <img style="float:left;" ng-src="{{item.imageUrl}}"/>
       </td>

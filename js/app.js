@@ -1,7 +1,7 @@
 angular
   .module('shopCart', [
     'ngRoute',
-    'inStockFilter'
+    'customFilters'
   ])
   .config(function($routeProvider) {
     $routeProvider

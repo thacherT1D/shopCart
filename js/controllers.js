@@ -2,6 +2,7 @@ angular
   .module('shopCart')
   .controller('MainCtrl', function ($scope, $rootScope) {
     $scope.item = {};
+    $scope.possibleCategories = {};
     $scope.inventory = [
       {
         "_id": "55c8ee82152165d244b98300",
