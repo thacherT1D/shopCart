@@ -8,3 +8,13 @@
 /*#ratingDropdown:hover {
   color: #18BC9C;
 }*/
+table {
+  margin: 20px;
+  padding: 10px;
+}
+th, td{
+  padding: 10px;
+}
+#itemTitle {
+  font-size: 30px;
+}

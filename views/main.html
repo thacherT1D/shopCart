@@ -26,21 +26,33 @@
   </div> -->
 
 
-  <table>
+  <table class="table-bordered">
     <th>Tea</th>
     <th>Information
-      <label>Sort by Price: </label>
-      <select type="button" class="btn btn-default" ng-init="order = 'name'" ng-model="order">
-      <option value="-price">Highest to Lowest</option>
-      <option value="price">Lowest to Highest</option>
-      </select>
+      <div style="float:right;">
+        <label>Sort by Price: </label>
+        <select type="button" class="btn btn-default" ng-init="order = 'name'" ng-model="order">
+        <option value="-price">Highest to Lowest</option>
+        <option value="price">Lowest to Highest</option>
+        </select>
+      </div>
     </th>
     <tr ng-repeat="item in inventory | filter:root.item | orderBy: order">
       <td>
         <img style="float:left;" ng-src="{{item.imageUrl}}"/>
       </td>
       <td>
-        <h3>{{item.name}}</h3>
+        <div>
+          <strong id="itemTitle">{{item.name}}</strong>
+          <div style="float:right;">
+            <label>Quantity: </label>
+            <select type="button" class="btn btn-default">
+              <option value="1">1</option>
+              <option value="2">2</option>
+            </select>
+            <button class="btn btn-primary" ng-click="addToCart(item)">Add to Bag</button>
+          </div>
+        </div>
         <p><strong>Price: </strong>{{item.price/100 | currency}}</p>
         <p><strong>Caffeine Scale: </strong>{{item.caffeineScale}}</p>
         <p><strong>Ingredients: </strong>{{item.ingredients}}</p>
@@ -49,6 +61,7 @@
         <strong>Categories: </strong><ul ng-repeat="category in item.categories">
           <li>{{category}}</li>
         </ul>
+        <p>items in cart {{item.__v}}</p>
       </td>
     </tr>
   </table>

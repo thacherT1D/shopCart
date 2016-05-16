@@ -3,6 +3,7 @@ angular
   .controller('MainCtrl', function ($scope, $rootScope) {
     $scope.item = {};
     $scope.possibleCategories = {};
+    $scope.cart = {};
     $scope.inventory = [
       {
         "_id": "55c8ee82152165d244b98300",
@@ -126,4 +127,7 @@ angular
         "categories": ["spring", "warm","winter"]
       }
     ];
+    $scope.addToCart = function(item) {
+      item.__v += 1;
+    };
   });
