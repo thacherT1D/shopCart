@@ -1,68 +1,50 @@
-<div ng-controller="MainCtrl">
-
+<table ng-controller="InventoryController" class="table-bordered">
   <div class="row">
-    <div class="col-md-4">
-      <label>Search by Category:  </label>
-      <select type="button" class="btn btn-default">
-      <option value="-category" selected>All</option>
-      <option value="cat1">Category 1</option>
-      <option value="cat2">Category 2</option>
-      <option value="cat3">Category 3</option>
+  <div class="col-md-4">
+    <label>Search by Category:  </label>
+    <select type="button" class="btn btn-default">
+    <option value="-category" selected>All</option>
+    <option value="cat1">Category 1</option>
+    <option value="cat2">Category 2</option>
+    <option value="cat3">Category 3</option>
+    </select>
+  </div>
+  <div class="col-md-4">
+    <input ng-model="root.item" type="text" class="form-control" placeholder="Search By Name">
+  </div>
+  <div class="col-md-4">
+    <button class="btn btn-info"><a href="/#/cart">Checkout | Bag Empty!</a></button>
+  </div>
+</div>
+
+  <th>Tea</th>
+  <th>Information
+    <div style="float:right;">
+      <label>Sort by Price: </label>
+      <select type="button" class="btn btn-default" ng-init="order = 'name'" ng-model="order">
+      <option value="-price">Highest to Lowest</option>
+      <option value="price">Lowest to Highest</option>
       </select>
     </div>
-    <div class="col-md-4">
-      <input ng-model="root.item" type="text" class="form-control" placeholder="Search By Name">
-    </div>
-    <div class="col-md-4">
-      <button class="btn btn-info"><a href="/#/cart">Checkout | Bag Empty!</a></button>
-    </div>
-  </div>
-
-
-  <div ng-repeat="item in inventory">
-    <div ng-repeat="category in item.categories">
-      <li>{{category}}</li>
-    </div>
-  </div>
-
-  <table class="table-bordered">
-    <th>Tea</th>
-    <th>Information
-      <div style="float:right;">
-        <label>Sort by Price: </label>
-        <select type="button" class="btn btn-default" ng-init="order = 'name'" ng-model="order">
-        <option value="-price">Highest to Lowest</option>
-        <option value="price">Lowest to Highest</option>
-        </select>
-      </div>
-    </th>
-    <tr ng-repeat="item in inventory | filter:root.item | orderBy: order">
-      <td>
-        <img style="float:left;" ng-src="{{item.imageUrl}}"/>
-      </td>
-      <td>
-        <div>
-          <strong id="itemTitle">{{item.name}}</strong>
-          <div style="float:right;">
-            <label>Quantity: </label>
-            <select type="button" class="btn btn-default">
-              <option value="1">1</option>
-              <option value="2">2</option>
-            </select>
-            <button class="btn btn-primary" ng-click="addToCart(item)">Add to Bag</button>
-          </div>
-        </div>
-        <p><strong>Price: </strong>{{item.price/100 | currency}}</p>
-        <p><strong>Caffeine Scale: </strong>{{item.caffeineScale}}</p>
-        <p><strong>Ingredients: </strong>{{item.ingredients}}</p>
-        <p><strong>Rating: </strong>{{item.rating}}</p>
-        <p><strong>In Stock? </strong>{{item.inStock | true_false}}</p>
-        <strong>Categories: </strong><ul ng-repeat="category in item.categories">
-          <li>{{category}}</li>
-        </ul>
-        <p>items in cart {{item.__v}}</p>
-        <p><strong>Subtotal: </strong>{{(item.price) * (item.__v)/100 | currency}}</p>
-      </td>
-    </tr>
-  </table>
-</div>
+  </th>
+  <tr ng-repeat="item in Inventory.inventory | orderBy: order |
+  filter:root.item ">
+    <td>
+      <img style="float:left;" ng-src="{{item.imageUrl}}"/>
+    </td>
+    <td>
+      <div>
+        <strong id="itemTitle">{{item.name}}</strong>
+      <p><strong>Price: </strong>{{item.price/100 | currency}}</p>
+      <p><strong>Caffeine Scale: </strong>{{item.caffeineScale}}</p>
+      <p><strong>Ingredients: </strong>{{item.ingredients}}</p>
+      <p><strong>Rating: </strong>{{item.rating}}</p>
+      <p><strong>In Stock? </strong>{{item.inStock | true_false}}</p>
+      <strong>Categories: </strong><ul ng-repeat="category in item.categories">
+        <li>{{category}}</li>
+      </ul>
+      <p>items in cart {{item.__v}}</p>
+      <p><strong>Subtotal: </strong>{{(item.price) * (item.__v)/100 | currency}}</p>
+    </td>
+  </tr>
+</table>
