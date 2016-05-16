@@ -1,0 +1,25 @@
+<div ng-controller="MainCtrl">
+  <table class="table-bordered">
+    <th>Product</th>
+    <th>Quantity</th>
+    <th>Sub-Total</th>
+    <th>Buttons</th>
+    <tr ng-repeat="item in inventory | orderBy: name">
+      <td>
+        <h2>{{item.name}}</h2>
+        <img ng-src="{{item.imageUrl}}"/>
+        <p><strong>Caffeine Scale: </strong>{{item.caffeineScale}}</p>
+        <p><strong>Ingredients: </strong>{{item.ingredients}}</p>
+        <p><strong>Rating: </strong>{{item.rating}}</p>
+      </td>
+      <td>{{item.__v}}</td>
+      <td>{{(item.price) * (item.__v)/100 | currency}}</td>
+      <td>
+        <button class="btn btn-warning">Edit</button>
+        <button class="btn btn-danger">Remove</button>
+      </td>
+
+    </tr>
+  </table>
+  </div>
+</div>

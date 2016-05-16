@@ -9,6 +9,10 @@ angular
         templateUrl: '../views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/cart', {
+        templateUrl: '../views/cart.html',
+        controller: 'MainCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

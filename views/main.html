@@ -14,17 +14,16 @@
       <input ng-model="root.item" type="text" class="form-control" placeholder="Search By Name">
     </div>
     <div class="col-md-4">
-      <button class="btn btn-info">Checkout | Bag Empty!</button>
+      <button class="btn btn-info"><a href="/#/cart">Checkout | Bag Empty!</a></button>
     </div>
   </div>
 
 
-  <!-- <div ng-repeat="item in inventory">
+  <div ng-repeat="item in inventory">
     <div ng-repeat="category in item.categories">
-      <option>{{category}}</option>
+      <li>{{category}}</li>
     </div>
-  </div> -->
-
+  </div>
 
   <table class="table-bordered">
     <th>Tea</th>
@@ -62,6 +61,7 @@
           <li>{{category}}</li>
         </ul>
         <p>items in cart {{item.__v}}</p>
+        <p><strong>Subtotal: </strong>{{(item.price) * (item.__v)/100 | currency}}</p>
       </td>
     </tr>
   </table>

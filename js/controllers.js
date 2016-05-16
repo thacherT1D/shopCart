@@ -130,4 +130,11 @@ angular
     $scope.addToCart = function(item) {
       item.__v += 1;
     };
+    // $scope.addToBag = function(item) {
+    //   $scope.cart.push({
+    //     "_id": item._id,
+    //     "name": item.name,
+    //     "__v": item.__v,
+    //   })
+    // };
   });
