@@ -1,22 +1,25 @@
-<table ng-controller="InventoryController" class="table-bordered">
-  <div class="row">
-  <div class="col-md-4">
-    <label>Search by Category:  </label>
-    <select type="button" class="btn btn-default">
-    <option value="-category" selected>All</option>
-    <option value="cat1">Category 1</option>
-    <option value="cat2">Category 2</option>
-    <option value="cat3">Category 3</option>
-    </select>
+<table class="table-bordered">
+  <div class="row text-center">
+  <div style="padding-top:8px;" class="col-xs-4">
+    <div>
+      <span  class="nullable">
+        <select style="font-size:16px;" ng-model="root.item" ng-options="teaType as teaType for teaType in Inventory.teaCategories">
+          <option value="">Search By Category</option>
+        </select>
+      </span>
+    </div>
   </div>
-  <div class="col-md-4">
-    <input ng-model="root.item" type="text" class="form-control" placeholder="Search By Name">
+  <div class="col-xs-4">
+    <input ng-model="root.name" type="text" class="form-control" placeholder="Search By Name">
   </div>
-  <div class="col-md-4">
-    <button class="btn btn-info"><a href="/#/cart">Checkout | Bag Empty!</a></button>
+  <div class="col-xs-4">
+    <button class="btn btn-default"><a href="/#/cart">Checkout | Bag Empty!</a></button>
   </div>
 </div>
 
+
+
+  <div ng-repeat="tea in teaCategories"></div>
   <th>Tea</th>
   <th>Information
     <div style="float:right;">
@@ -28,13 +31,21 @@
     </div>
   </th>
   <tr ng-repeat="item in Inventory.inventory | orderBy: order |
-  filter:root.item ">
+  filter:root.item || root.name">
     <td>
       <img style="float:left;" ng-src="{{item.imageUrl}}"/>
     </td>
     <td>
-      <div>
-        <strong id="itemTitle">{{item.name}}</strong>
+      <strong id="itemTitle">{{item.name}}</strong>
+      <div style="float:right;">
+        <label>Quantity:</label>
+        <select type="button" class="btn btn-default">
+        <option value="1" selected>1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        </select>
+        <button class="btn btn-info">Add</button>
+      </div>
       <p><strong>Price: </strong>{{item.price/100 | currency}}</p>
       <p><strong>Caffeine Scale: </strong>{{item.caffeineScale}}</p>
       <p><strong>Ingredients: </strong>{{item.ingredients}}</p>

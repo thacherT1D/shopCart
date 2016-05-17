@@ -12,6 +12,7 @@ angular
       })
       .when('/cart', {
         controller: 'CartController',
+        controllerAs: 'Cart',
         templateUrl: 'cart/cart.html'
 
       })
