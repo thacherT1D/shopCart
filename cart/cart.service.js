@@ -6,10 +6,8 @@
     .factory('CartService', CartService);
 
 
-
   function CartService() {
     var cart = [];
-    var numberofItems;
     return {
       addToCart: function (item, quantity) {
         var inCart = false;
@@ -25,6 +23,9 @@
       },
       getCart: function() {
         return cart;
+      },
+      deleteItem: function(quantity) {
+        quantity = 0;
       }
     }
   }

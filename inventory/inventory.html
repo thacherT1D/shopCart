@@ -13,9 +13,15 @@
     <input ng-model="root.name" type="text" class="form-control" placeholder="Search By Name">
   </div>
   <div class="col-xs-4">
-    <button class="btn btn-default">Checkout | Bag Empty! {{Inventory.cart.length}}
-    </button>
-    <div></div>
+    <a href="/#/cart"><button class="btn btn-default">
+      <ng-pluralize
+        count="Inventory.cart.length"
+        when="{'0': 'Bag Empty!',
+              'one': '1 Item in Cart',
+              'other': '{} Items in Cart'}"
+        >
+      </ng-pluralize> | Checkout
+    </button></a>
   </div>
 </div>
 
@@ -53,8 +59,6 @@
       <strong>Categories: </strong><ul ng-repeat="category in item.categories">
         <li>{{category}}</li>
       </ul>
-      <p>items in cart {{item.__v}}</p>
-      <p><strong>Subtotal: </strong>{{(item.price) * (item.__v)/100 | currency}}</p>
     </td>
   </tr>
 </table>
