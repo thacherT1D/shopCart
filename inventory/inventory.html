@@ -39,12 +39,13 @@
       <strong id="itemTitle">{{item.name}}</strong>
       <div style="float:right;">
         <label>Quantity:</label>
-        <select type="button" class="btn btn-default">
+        <select ng-model="quantity" type="button" class="btn btn-default">
         <option value="1" selected>1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         </select>
-        <button class="btn btn-info">Add</button>
+        <button ng-click="Inventory.increaseQty(item, quantity)" class="btn btn-info">Add</button>
+        <!-- <div>{{item.__v}}</div> -->
       </div>
       <p><strong>Price: </strong>{{item.price/100 | currency}}</p>
       <p><strong>Caffeine Scale: </strong>{{item.caffeineScale}}</p>
