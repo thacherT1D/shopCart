@@ -5,6 +5,7 @@
     .module('shopCart')
     .controller('InventoryController', InventoryController);
 
+    InventoryController.$inject = ['InventoryService', 'CartService'];
 
     function InventoryController(InventoryService, CartService) {
       var vm = this;
@@ -16,12 +17,12 @@
         })
       });
 
-      // CartService.addItem(vm.quantity).then(function() {
-      //
-      //
-      // })
-      vm.increaseQty = function(item, quantity) {
+      vm.cart = CartService.getCart();
+
+      vm.addToCart = function(item, quantity) {
         CartService.addToCart(item, quantity);
       }
+
+
     }
 })();
