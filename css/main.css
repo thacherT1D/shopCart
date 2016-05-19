@@ -5,9 +5,9 @@
   /*font-size: 16px;*/
 
 }
-/*#ratingDropdown:hover {
-  color: #18BC9C;
-}*/
+.buttonSpacing {
+  padding: 5px;
+}
 table {
   margin: 20px;
   padding: 10px;

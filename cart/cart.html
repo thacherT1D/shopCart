@@ -9,11 +9,12 @@
 </div> -->
 <div class="container">
 <h2>Your Order Subtotal: <small style="float: right;">{{Cart.subtotal/ 100 | currency}}</small></h2>
+<div class="row">
 <table class="table-bordered">
-  <th>Product</th>
-  <th>Quantity</th>
-  <th>Sub-Total</th>
-  <th>Buttons</th>
+  <th class="col-md-6">Product</th>
+  <th class="col-md-1">Quantity</th>
+  <th class="col-md-2">Sub-Total</th>
+  <th class="col-md-2"></th>
   <tr ng-repeat="tea in Cart.cart" ng-init="tea.orderQuan = true">
     <td>
       <h2>{{tea.item.name}}</h2>
@@ -31,11 +32,13 @@
     </td>
     <td>{{(tea.item.price) * (tea.quantity)/100 | currency}}</td>
     <td>
-      <button ng-click="Cart.edit(tea)" class="btn btn-warning">Edit</button>
-      <button ng-click = "Cart.deleteTea(tea)" class="btn btn-danger">Remove</button>
-      <button ng-show="tea.showEdit" ng-click="Cart.save(tea)" class="btn btn-default">Save</button>
+      <div>
+      <button ng-click="Cart.edit(tea)" class="buttonSpacing btn btn-warning">Edit</button>
+      <button ng-click = "Cart.deleteTea(tea)" class="buttonSpacing btn btn-danger">Remove</button>
+      <button ng-show="tea.showEdit" ng-click="Cart.save(tea)" class="buttonSpacing btn btn-default">Save</button>
+    </div>
     </td>
-
   </tr>
 </table>
+</div>
 </div>
