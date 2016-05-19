@@ -8,6 +8,9 @@
       function
       ContactController() {
         var vm = this;
-
+        vm.submitForm = function(vm) {
+          vm.form = false;
+          vm.message = true;
+        }
       }
 })();
