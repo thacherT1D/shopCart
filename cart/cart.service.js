@@ -8,6 +8,7 @@
 
   function CartService() {
     var cart = [];
+    var subtotal;
     return {
       addToCart: function (item, quantity) {
         var inCart = false;
@@ -24,8 +25,15 @@
       getCart: function() {
         return cart;
       },
-      deleteItem: function(quantity) {
-        quantity = 0;
+      cartSubtotal: function() {
+        subtotal = 0;
+        for (var i = 0; i < cart.length; i++) {
+          subtotal += ((cart[i].item.price)*(cart[i].quantity));
+        }
+        return subtotal;
+      },
+      deleteItem: function(item) {
+        cart.splice(cart.indexOf(item),1);
       }
     }
   }

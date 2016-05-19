@@ -1,6 +1,4 @@
-<div>{{Cart.cart}}</div>
-
-<div>
+<!-- <div>
 <h2><ng-pluralize
   count="Cart.cart.length"
   when="{'0': 'No Items in Cart',
@@ -8,14 +6,14 @@
         'other': ''}"
   >
 </ng-pluralize></h2>
-</div>
-
-<table class="table-bordered">
+</div> -->
+<div>Subtotal: {{Cart.subtotal/ 100 | currency}}</div>
+<table class="table-bordered" >
   <th>Product</th>
   <th>Quantity</th>
   <th>Sub-Total</th>
   <th>Buttons</th>
-  <tr ng-repeat="tea in Cart.cart">
+  <tr ng-repeat="tea in Cart.cart" ng-init="tea.orderQuan = true">
     <td>
       <h2>{{tea.item.name}}</h2>
       <img ng-src="{{tea.item.imageUrl}}"/>
@@ -24,11 +22,17 @@
       <p><strong>Rating: </strong>{{tea.item.rating}}</p>
       <p><strong>Price per item: </strong>{{tea.item.price/100 | currency}}</p>
     </td>
-    <td>{{tea.quantity}}</td>
+    <td>
+      <div ng-show="tea.orderQuan">{{tea.quantity}}</div>
+      <div>
+        <input ng-show="tea.showEdit" type="number" class="form-control" ng-model="tea.quantity" min=1>
+      </div>
+    </td>
     <td>{{(tea.item.price) * (tea.quantity)/100 | currency}}</td>
     <td>
-      <button class="btn btn-warning">Edit</button>
-      <button ng-click="deleteItem" class="btn btn-danger">Remove</button>
+      <button ng-click="Cart.edit(tea)" class="btn btn-warning">Edit</button>
+      <button ng-click = "Cart.deleteTea(tea)" class="btn btn-danger">Remove</button>
+      <button ng-show="tea.showEdit" ng-click="Cart.save(tea)" class="btn btn-default">Save</button>
     </td>
 
   </tr>
