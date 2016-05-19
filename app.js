@@ -14,7 +14,16 @@ angular
         controller: 'CartController',
         controllerAs: 'Cart',
         templateUrl: 'cart/cart.html'
-
+      })
+      .when('/about', {
+        controller: 'AboutController',
+        controllerAs: 'About',
+        templateUrl: 'about/about.html'
+      })
+      .when('/contact', {
+        controller: 'ContactController',
+        controllerAs: 'Contact',
+        templateUrl: 'contact/contact.html'
       })
       .otherwise({
         redirectTo: '/'
