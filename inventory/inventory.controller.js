@@ -22,7 +22,5 @@
       vm.addToCart = function(item, quantity) {
         CartService.addToCart(item, quantity);
       }
-
-
     }
 })();
