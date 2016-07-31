@@ -1,31 +1,40 @@
-angular
-  .module('shopCart', [
-    'ngRoute',
-    'customFilters'
-  ])
-  .config(function($routeProvider) {
-    $routeProvider
-      .when('/', {
-        controller: 'InventoryController',
-        controllerAs: 'Inventory',
+(function() {
+  'use strict'
+
+  angular
+    .module("shopCart", ['ui.router'])
+    .config(config);
+
+  config.$inject = ['$urlRouterProvider', '$stateProvider'];
+
+  function config($urlRouterProvider, $stateProvider) {
+    $urlRouterProvider.otherwise('/');
+
+    $stateProvider
+      .state('inventory', {
+        url: '/',
         templateUrl: 'inventory/inventory.html',
+        controller: 'InventoryController',
+        controllerAs: 'Inventory'
       })
-      .when('/cart', {
+      .state('cart', {
+        url: '/cart',
+        templateUrl: 'cart/cart.html',
         controller: 'CartController',
-        controllerAs: 'Cart',
-        templateUrl: 'cart/cart.html'
+        controllerAs: 'Cart'
       })
-      .when('/about', {
-        controller: 'AboutController',
-        controllerAs: 'About',
-        templateUrl: 'about/about.html'
-      })
-      .when('/contact', {
+      .state('contact', {
+        url: '/contact',
+        templateUrl: 'contact/contact.html',
         controller: 'ContactController',
-        controllerAs: 'Contact',
-        templateUrl: 'contact/contact.html'
+        controllerAs: 'Contact'
       })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+      .state('about', {
+        url: '/about',
+        templateUrl: 'about/about.html',
+        controller: 'AboutController',
+        controllerAs: 'About'
+      })
+  }
+
+})();
