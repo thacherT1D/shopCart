@@ -1,6 +1,8 @@
+<!-- {{Inventory.inventory[0]}}
+{{Inventory.teaCategories}} -->
+
+
 <table class="table-bordered">
-
-
   <th>Tea</th>
   <th>Information</th>
   <tr ng-repeat="item in Inventory.inventory">
@@ -8,7 +10,19 @@
       <img style="float:left;" ng-src="{{item.imageUrl}}"/>
     </td>
     <td>
-      {{item.name}}
+      <p>Name: {{item.name}}</p>
+      <p>Ingredients: {{item.ingredients}}</p>
+      <p> Caffeine Points: {{item.caffeineScale}}</p>
+      <p> Price: {{(item.price / 100) | currency }}</p>
+      <p>In Stock? {{item.inStock}}</p>
+      <p>Rating: {{item.rating}}</p>
+      <p> Categories: <li ng-repeat="category in item.categories"> {{category}} </li></p>
+      <div class="brn-group">
+        <button class="btn btn-primary">Test</button>
+        <button class="btn btn-danger">Test 2</button>
+
+      </div>
+
     </td>
   </tr>
 </table>

@@ -2,7 +2,7 @@
   'use strict'
 
   angular
-    .module("shopCart", ['ui.router'])
+    .module("shopCart", ['ui.router', 'customFilters'])
     .config(config);
 
   config.$inject = ['$urlRouterProvider', '$stateProvider'];
@@ -35,6 +35,7 @@
         controller: 'AboutController',
         controllerAs: 'About'
       })
+      
   }
 
 })();
