@@ -35,6 +35,8 @@
             teaCategories = [...new Set(teaCategories)];
             return teaCategories;
           });
+
+
         } else {
           return $q(function (resolve, reject) {
             resolve(teaCategories);
