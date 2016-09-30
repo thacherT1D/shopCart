@@ -1,64 +1,28 @@
+<!-- {{Inventory.inventory[0]}}
+{{Inventory.teaCategories}} -->
+
+
 <table class="table-bordered">
-  <div class="row text-center">
-  <div style="padding-top:8px;" class="col-xs-4">
-    <div>
-      <span  class="nullable">
-        <select style="font-size:16px;" ng-model="root.item" ng-options="teaType as teaType for teaType in Inventory.teaCategories">
-          <option value="">Search By Category</option>
-        </select>
-      </span>
-    </div>
-  </div>
-  <div class="col-xs-4">
-    <input ng-model="root.name" type="text" class="form-control" placeholder="Search By Name">
-  </div>
-  <div class="col-xs-4">
-    <a href="/#/cart"><button class="btn btn-default">
-      <ng-pluralize
-        count="Inventory.cart.length"
-        when="{'0': 'Bag Empty!',
-              'one': '1 Item in Cart',
-              'other': '{} Items in Cart'}"
-        >
-      </ng-pluralize> | Checkout
-    </button></a>
-  </div>
-</div>
-
-
-
-  <div ng-repeat="tea in teaCategories"></div>
   <th>Tea</th>
-  <th>Information
-    <div style="float:right;">
-      <label>Sort by Price: </label>
-      <select type="button" class="btn btn-default" ng-init="order = 'name'" ng-model="order">
-      <option value="-price">Highest to Lowest</option>
-      <option value="price">Lowest to Highest</option>
-      </select>
-    </div>
-  </th>
-  <tr ng-repeat="item in Inventory.inventory | orderBy: order |
-  filter:root.item || root.name">
+  <th>Information</th>
+  <tr ng-repeat="item in Inventory.inventory">
     <td>
       <img style="float:left;" ng-src="{{item.imageUrl}}"/>
     </td>
     <td>
-      <strong id="itemTitle">{{item.name}}</strong>
-      <div style="float:right;">
-        <label>Quantity:</label>
-        <select ng-init="quantity = 1" ng-model="quantity" type="button" class="btn btn-default" ng-options="qty for qty in [1,2,3,4,5,6,7,8,9,10]">
-        </select>
-        <button ng-click="Inventory.addToCart(item, quantity)" class="btn btn-info">Add</button>
+      <p>Name: {{item.name}}</p>
+      <p>Ingredients: {{item.ingredients}}</p>
+      <p> Caffeine Points: {{item.caffeineScale}}</p>
+      <p> Price: {{(item.price / 100) | currency }}</p>
+      <p>In Stock? {{item.inStock}}</p>
+      <p>Rating: {{item.rating}}</p>
+      <p> Categories: <li ng-repeat="category in item.categories"> {{category}} </li></p>
+      <div class="brn-group">
+        <button class="btn btn-primary">Test</button>
+        <button class="btn btn-danger">Test 2</button>
+
       </div>
-      <p><strong>Price: </strong>{{item.price/100 | currency}}</p>
-      <p><strong>Caffeine Scale: </strong>{{item.caffeineScale}}</p>
-      <p><strong>Ingredients: </strong>{{item.ingredients}}</p>
-      <p><strong>Rating: </strong>{{item.rating}}</p>
-      <p><strong>In Stock? </strong>{{item.inStock | true_false}}</p>
-      <strong>Categories: </strong><ul ng-repeat="category in item.categories">
-        <li>{{category}}</li>
-      </ul>
+
     </td>
   </tr>
 </table>
