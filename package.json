@@ -16,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/thacherT1D/teaShop/issues"
   },
-  "homepage": "https://github.com/thacherT1D/teaShop#readme"
+  "homepage": "https://github.com/thacherT1D/teaShop#readme",
+  "dependencies": {
+    "knex": "^0.12.6",
+    "pg": "^6.1.0"
+  },
+  "engines": {
+    "node": "7.1.0"
+  }
 }
