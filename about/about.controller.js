@@ -5,9 +5,9 @@
     .module('shopCart')
     .controller('AboutController', AboutController);
 
-      function
-      AboutController() {
-        var vm = this;
 
+      function AboutController ($scope) {
+        var vm = this;
+        $scope.title = 'about';
       }
 })();

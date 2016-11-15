@@ -21,6 +21,7 @@
         if(inCart == false) {
           cart.push({"item": item, "quantity": quantity});
         }
+        console.log(cart);
       },
       getCart: function() {
         return cart;

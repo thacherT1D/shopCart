@@ -12,10 +12,10 @@
         var vm = this;
         vm.cart = CartService.getCart();
         vm.subtotal = CartService.cartSubtotal();
-        vm.save = function(tea) {
+        this.save = (tea) => {
           tea.showEdit = false;
           tea.orderQuan = true;
-          vm.subtotal = CartService.cartSubtotal();
+          this.subtotal = CartService.cartSubtotal();
         };
         vm.edit = function(tea) {
           tea.showEdit = true;
