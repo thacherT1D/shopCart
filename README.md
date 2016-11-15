@@ -8,3 +8,9 @@ Some features of the project include:
 - add/remove from shopping cart
 - price and subtotal calculation
 - verification of cart contents and cost prior to placing the order
+
+https://teaparty.herokuapp.com/ | https://git.heroku.com/teaparty.git
+
+Next Refactoring:
+- ES6 and Class Constructors
+- User Accounts
