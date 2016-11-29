@@ -1,3 +1,30 @@
+class InventoryService {
+  constructor($http) {
+    this.$http = $http;
+    this.inventory = [];
+
+    this.$http({
+      url: '/inventory',
+      method: 'GET'
+    }).then((res) => {
+      this.inventory = res.data;
+
+      // console.log(res);
+    }).catch((err) => {
+      return err;
+    });
+  }
+  getFishes() {
+    return this.inventory;
+  }
+}
+
+InventoryService.$inject = ['$http'];
+
+export default InventoryService;
+
+
+
 (function () {
   'use strict'
 
@@ -13,7 +40,7 @@
     return {
       getInventory: function () {
         if(inventory.length == 0 && !resolvedData) {
-          return $http.get('inventory/inventory.json').then(function(result) {
+          return $http.get('/inventory').then(function(result) {
             inventory = result.data;
             resolvedData = true;
             return inventory;
