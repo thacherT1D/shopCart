@@ -4,7 +4,10 @@
   "description": "This app uses AngularJS to build an online shop website, enabling customers to browse, add items to a cart and purchase items.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "knex": "knex",
+    "heroku-postbuild": "knex migrate:latest",
+    "nodemon": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +29,6 @@
     "pg": "^6.1.0"
   },
   "engines": {
-    "node": "7.1.0"
+    "node": "7.2.0"
   }
 }
